@@ -1,7 +1,10 @@
 package com.turvo.teller.atm.service;
 
+import org.springframework.stereotype.Service;
+
 import java.math.BigDecimal;
 
+@Service
 public class AtmService implements AtmServiceImpl {
 
     @Override
@@ -16,6 +19,7 @@ public class AtmService implements AtmServiceImpl {
 
     @Override
     public BigDecimal requestBalance(int accountNumber, int pin) {
-        return null;
+        BigDecimal bigDecimal = new BigDecimal(2);
+        return bigDecimal;
     }
 }
