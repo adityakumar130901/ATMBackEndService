@@ -1,11 +1,13 @@
 package com.turvo.teller.atm.controller;
 
+import com.turvo.teller.atm.domain.Account;
 import com.turvo.teller.atm.service.AtmService;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @RestController
 @EnableAutoConfiguration
@@ -19,7 +21,7 @@ public class AtmController {
     }
 
     @GetMapping("/")
-    public String testHome(){
+    public String testHome() {
         return "ATM Home application";
     }
 
@@ -33,10 +35,15 @@ public class AtmController {
         return this.atmService.withdrawCash(accountNumber, pin, amount);
     }
 
-   @GetMapping("/balance")
+    @GetMapping("/balance")
     public BigDecimal balance(@RequestParam int accountNumber, @RequestParam int pin) {
-       System.out.println("checking balance");
-        return this.atmService.requestBalance(accountNumber,pin);
-   }
+        System.out.println("checking balance");
+        return this.atmService.requestBalance(accountNumber, pin);
+    }
+
+    @GetMapping("/accountInfo")
+    public List<Account> accountInfo(){
+        return this.atmService.accounts();
+    }
 
 }

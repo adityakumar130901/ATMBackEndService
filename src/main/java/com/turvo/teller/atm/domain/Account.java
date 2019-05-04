@@ -13,6 +13,12 @@ public class Account implements Serializable {
 
     private int accountPin;
 
+    public Account(int accountNumber, BigDecimal accountBalance, int accountPin) {
+        this.accountNumber = accountNumber;
+        this.accountBalance = accountBalance;
+        this.accountPin = accountPin;
+    }
+
     public int getAccountNumber() {
         return this.accountNumber;
     }
@@ -35,5 +41,14 @@ public class Account implements Serializable {
 
     public void setAccountPin(int accountPin) {
         this.accountPin = accountPin;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "accountNumber=" + accountNumber +
+                ", accountBalance=" + accountBalance +
+                ", accountPin=" + accountPin +
+                '}';
     }
 }
