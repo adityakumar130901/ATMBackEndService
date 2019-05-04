@@ -15,7 +15,7 @@ https://atm-service.herokuapp.com
 4. Get balance API can be cached and be invalidated after each balance update. Will be adding through @Cacheable annotation it if time permits.
 5. Unit test and integration test for all the possible scenario is skipped in interest of time.
 6. Ideally, response should be sent from server as ResponseEntity having response code, success/failure message(including exception). For MVP, this has been skipped.
-
+7. Using AOP, every request can be authorized to pass or not. Skipping this in interest of time.
 
 
 

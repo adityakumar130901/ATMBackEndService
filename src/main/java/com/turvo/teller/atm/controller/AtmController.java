@@ -37,7 +37,6 @@ public class AtmController {
 
     @GetMapping("/balance")
     public BigDecimal balance(@RequestParam int accountNumber, @RequestParam int pin) {
-        System.out.println("checking balance");
         return this.atmService.requestBalance(accountNumber, pin);
     }
 
