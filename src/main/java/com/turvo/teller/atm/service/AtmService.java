@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface AtmService {
 
-    public int depositCash(int accountNumber, BigDecimal amount);
+    public int depositCash(int accountNumber, int amount);
 
-    public int withdrawCash(int accountNumber, int pin, BigDecimal amount);
+    public int withdrawCash(int accountNumber, int pin, int amount);
 
     public int requestBalance(int accountNumber, int pin);
 

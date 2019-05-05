@@ -22,16 +22,16 @@ public class AtmServiceImpl implements AtmService {
     }
 
     @Override
-    public int depositCash(int accountNumber, BigDecimal amount) {
+    public int depositCash(int accountNumber, int amount) {
         if (isAccountValid(accountNumber)) {
-            if (amount.compareTo(BigDecimal.ZERO) < 0) {
+            if (amount < 0) {
                 return CANT_DEPOSIT_NEGATIVE_CASH;
             }
 
             final Account account = this.accountDao.getAccount(accountNumber);
             synchronized (account) {
                 BigDecimal currentBalance = account.getAccountBalance();
-                currentBalance.add(amount);
+                currentBalance.add(new BigDecimal(amount));
                 account.setAccountBalance(currentBalance);
                 return currentBalance.intValue();
             }
@@ -45,20 +45,20 @@ public class AtmServiceImpl implements AtmService {
     }
 
     @Override
-    public int withdrawCash(int accountNumber, int pin, BigDecimal withdrawlAmount) {
+    public int withdrawCash(int accountNumber, int pin, int withdrawlAmount) {
         int currentBalance = requestBalance(accountNumber, pin);
 
         // Error case
         if (currentBalance < 0) {
             return currentBalance;
         } else {
-            if (currentBalance > withdrawlAmount.intValue()) {
+            if (currentBalance > withdrawlAmount) {
                 final Account account = this.accountDao.getAccount(accountNumber);
                 synchronized (account) {
-                    BigDecimal requestedBalance = account.getAccountBalance();
-                    requestedBalance = requestedBalance.subtract(withdrawlAmount);
-                    account.setAccountBalance(requestedBalance);
-                    return requestedBalance.intValue();
+                    int requestedBalance = account.getAccountBalance().intValue();
+                    requestedBalance = requestedBalance - withdrawlAmount;
+                    account.setAccountBalance(new BigDecimal(requestedBalance));
+                    return requestedBalance;
                 }
             } else {
                 return BALANCE_NOT_SUFFICIENT_TO_WITHDRAW;

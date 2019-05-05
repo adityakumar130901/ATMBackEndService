@@ -31,7 +31,7 @@ public class AtmController {
     }
 
     @PostMapping("/withdraw")
-    public int withdraw(@RequestBody int accountNumber, @RequestBody int pin, @RequestBody BigDecimal amount) {
+    public int withdraw(@RequestBody int accountNumber, @RequestBody int pin, @RequestBody int amount) {
         return this.atmService.withdrawCash(accountNumber, pin, amount);
     }
 
