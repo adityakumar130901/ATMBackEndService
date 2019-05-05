@@ -21,6 +21,7 @@ https://atm-service.herokuapp.com
 7. Using AOP, every request can be authorized to pass or not. Skipping this in interest of time.
 8. For simplicity purpose, returning balance in int. (Assuming the balance is not crossing int overflow limit).
 9. Account validation and pin validation can be moved to different authentication service. Keeping it at one place for sake of simplicity.
+10. For simplicity all post request details has account number and pin in the request. This should be hidden and shouldn't be part of URL.
 
 
 
