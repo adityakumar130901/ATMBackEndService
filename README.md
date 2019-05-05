@@ -6,8 +6,6 @@ https://github.com/vikas434/ATMBackEndService
 Code deployment is done on heroeku. This can be accessed through
 https://atm-service.herokuapp.com
 
-**Swagger Link**
-
 
 
 **Assumptions**
@@ -22,6 +20,8 @@ https://atm-service.herokuapp.com
 8. For simplicity purpose, returning balance in int. (Assuming the balance is not crossing int overflow limit).
 9. Account validation and pin validation can be moved to different authentication service. Keeping it at one place for sake of simplicity.
 10. For simplicity all post request details has account number and pin in the request. This should be hidden and shouldn't be part of URL.
+11. In interest of time, couldn't complete the swagger link.
+12. In interest of time, API documentation with function signature couldn't be completed.
 
 
 
