@@ -25,12 +25,12 @@ public class AtmController {
         return "ATM Home application";
     }
 
-    @PostMapping("/deposit")
+    @PostMapping(path = "/deposit", consumes = "application/json", produces = "application/json")
     public int deposit(@RequestBody int accountNumber, @RequestBody int amount) {
         return this.atmService.depositCash(accountNumber, amount);
     }
 
-    @PostMapping("/withdraw")
+    @PostMapping(path="/withdraw", consumes = "application/json", produces = "application/json")
     public int withdraw(@RequestBody int accountNumber, @RequestBody int pin, @RequestBody int amount) {
         return this.atmService.withdrawCash(accountNumber, pin, amount);
     }
