@@ -26,7 +26,7 @@ public class AtmController {
     }
 
     @PostMapping("/deposit")
-    public int deposit(@RequestBody int accountNumber, @RequestBody BigDecimal amount) {
+    public int deposit(@RequestBody int accountNumber, @RequestBody int amount) {
         return this.atmService.depositCash(accountNumber, amount);
     }
 
