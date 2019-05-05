@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -25,13 +24,13 @@ public class AtmController {
         return "ATM Home application";
     }
 
-    @PostMapping(path = "/deposit", consumes = "application/json", produces = "application/json")
-    public int deposit(@RequestBody int accountNumber, @RequestBody int amount) {
+    @PostMapping(path = "/deposit/{accountNumber}/{amount}", consumes = "application/json")
+    public int deposit(@PathVariable int accountNumber, @PathVariable int amount) {
         return this.atmService.depositCash(accountNumber, amount);
     }
 
-    @PostMapping(path="/withdraw", consumes = "application/json", produces = "application/json")
-    public int withdraw(@RequestBody int accountNumber, @RequestBody int pin, @RequestBody int amount) {
+    @PostMapping(path="/withdraw/{accountNumber}/{pin}/{amount}", consumes = "application/json")
+    public int withdraw(@PathVariable int accountNumber, @PathVariable int pin, @PathVariable int amount) {
         return this.atmService.withdrawCash(accountNumber, pin, amount);
     }
 
