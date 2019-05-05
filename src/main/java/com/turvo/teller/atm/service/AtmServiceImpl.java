@@ -31,9 +31,9 @@ public class AtmServiceImpl implements AtmService {
             final Account account = this.accountDao.getAccount(accountNumber);
             synchronized (account) {
                 BigDecimal currentBalance = account.getAccountBalance();
-                currentBalance.add(new BigDecimal(amount));
-                account.setAccountBalance(currentBalance);
-                return currentBalance.intValue();
+                BigDecimal newBalance = currentBalance.add(new BigDecimal(amount));
+                account.setAccountBalance(newBalance);
+                return newBalance.intValue();
             }
         } else {
             return ACCOUNT_INVALID;
